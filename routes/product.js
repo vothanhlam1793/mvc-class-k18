@@ -22,4 +22,18 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// PARAMETER
+router.get('/:id', function(req, res, next) {
+    // ROUTER
+    var id = req.params.id;
+
+    // CONTROLLER
+    var product = products.getProductWithId(id);
+
+    res.render('product/index', { 
+        title: 'Product',
+        product: product
+    }); 
+});
+
 module.exports = router;
