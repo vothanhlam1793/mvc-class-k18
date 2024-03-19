@@ -10,7 +10,6 @@ router.get('/', function(req, res, next) {
     // ROUTER
     var query = req.query;
 
-
     // CONTROLLER
     // MODEL - PRODUCT
     var product = products.getProductWithId(query.id);
