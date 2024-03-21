@@ -33,7 +33,16 @@ var products = {
 
 
 function getProductWithId(id) {
-    return products[id];
+    console.log("PRODUCT ID: " + products[id]);
+    if(products[id] == undefined) {
+        return {
+            name: "Product not found",
+            price: 0,
+            description: "Description not found"
+        };
+    } else {
+        return products[id];
+    }
 };
 
 module.exports.getProductWithId = getProductWithId;
