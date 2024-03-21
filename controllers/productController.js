@@ -1,12 +1,35 @@
 // MODEL - DRAFF
 
 /* 
-    {
+    PRODUCT: {
         name: "",
         price: "",
         description: ""
     }
 */
+
+/* 
+    CUSTOMER: {
+        name: "",
+        phone: "",
+        email: "",
+        address: "",
+        debt: 0,
+        orders: [],
+        description: ""x
+    }
+
+    METHODS HTTP 
+    ----------------
+    CREATE ?    POST /product {name, price, description} => INSERT INTO products
+    READ ?      GET /product/:id => QUERY
+    UPDATE ?    POST /product/:id {name, price, description} => UPDATE
+    DELETE ?    DELETE /product/:id 
+
+    CRUD - REST API
+
+*/
+
 var products = {
     "id1": {
         name: "Product 1",
@@ -28,10 +51,15 @@ var products = {
         price: 400,
         description: "Description of product 4"
     
+    },
+    "id5": {
+        name: "Product 5",
+        price: 500,
+        description: "Description of product 5"
     }
 };
 
-
+// READ 
 function getProductWithId(id) {
     console.log("PRODUCT ID: " + products[id]);
     if(products[id] == undefined) {

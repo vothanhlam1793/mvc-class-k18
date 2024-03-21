@@ -7,6 +7,8 @@ function updateProduct(product){
     price.innerHTML = "Giá: " + product.price;
     description.innerHTML = product.description;
 }
+
+
 function getProduct(id){
 
     // B1 - Khai bao AJAX JS
