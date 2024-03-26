@@ -37,4 +37,20 @@ async function run() {
     client.close();
 }
 
-run();
+// run();
+
+async function insertProduct(product) {
+    
+};
+
+async function updateProduct(id, product) { 
+    
+}
+
+async function deleteProduct(id) {
+    
+}
+
+async function getProducts() {  
+
+}
