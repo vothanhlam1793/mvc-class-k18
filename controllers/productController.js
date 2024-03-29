@@ -59,6 +59,8 @@ var products = {
     }
 };
 
+var modelProduct = require('../models/productModel');
+
 // READ 
 function getProductWithId(id) {
     console.log("PRODUCT ID: " + products[id]);
@@ -73,4 +75,10 @@ function getProductWithId(id) {
     }
 };
 
+async function getAllProducts() {
+    var products = await modelProduct.run();
+    return products;
+}
+
 module.exports.getProductWithId = getProductWithId;
+module.exports.getAllProducts = getAllProducts;

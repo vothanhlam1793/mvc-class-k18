@@ -22,6 +22,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/all', async function(req, res, next) {
+    // CONTROLLER
+    var product = await products.getAllProducts();
+
+    res.send(product);
+});
+
 // PARAMETER
 // /product/:id
 router.get('/:id', function(req, res, next) {
@@ -33,5 +40,6 @@ router.get('/:id', function(req, res, next) {
 
     res.send(product);
 });
+
 
 module.exports = router;
