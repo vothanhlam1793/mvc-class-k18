@@ -8,19 +8,24 @@
         <div class="row">
             <div class="col-3 pt-3">
                 SIDEBAR
-                <div class="list-group">
-                    <a href="/product?id=id1" class="list-group-item list-group-item-action">Sản phẩm 1</a>
-                    <a href="/product?id=id2" class="list-group-item list-group-item-action">Sản phẩm 2</a>
-                    <a href="/product?id=id3" class="list-group-item list-group-item-action">Sản phẩm 3</a>
-                </div> 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item list-group-item-success" onclick="getProduct('id1')">SP 1</li>
-                    <li class="list-group-item list-group-item-success" onclick="getProduct('id2')">SP 2</li>
-                    <li class="list-group-item list-group-item-success" onclick="getProduct('id3')">SP 3</li>
-                    <li class="list-group-item list-group-item-success" onclick="getProduct('id4')">SP 4</li>
+                    <% product.forEach(item => { %>
+                        <li class="list-group-item list-group-item-success" onclick="getProduct('<%= item._id %>')"><%= item.name %></li>
+                    <% }); %>
                 </ul> 
             </div>
             <div class="col-9">
+                <div class="row pt-4">
+                    <div class="col">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="productNameInput" placeholder="Tên sản phẩm">
+                            <input type="text" class="form-control" id="productPriceInput" placeholder="Giá sản phẩm">
+                            <input type="text" class="form-control" id="productDescriptionInput" placeholder="Mô tả sản phẩm">
+                            <button class="btn btn-primary" onclick="addProduct()">Thêm sản phẩm</button>
+                            <button class="btn btn-warning" onclick="updateProductDB()">Cập nhật sản phẩm</button>
+                        </div>
+                    </div>
+                </div>
                 <div class="row pt-4">
                     <div class="col-4">
                         <img src="https://via.placeholder.com/300" alt="Product Image" class="img-fluid">
@@ -28,8 +33,11 @@
                     <div class="col-8">
                         <h3 id="productName"><%= product.name %></h3>
                         <p id="productPrice">Giá:  <%= product.price %> đ</p>
+                        <p id="productId" style="display: none;"></p>
                         <p id="productDescription"><%= product.description %></p>
                         <button class="btn btn-primary">Mua hàng</button>
+                        <button class="btn btn-danger" id="btnDeleteProduct" onclick="deleteProduct()">Xoá</button>
+                        <button class="btn btn-warning" id="btnUpdateProduct" onclick="updateProductDB()">Cập nhật</button>
                     </div>
                 </div>
                 <hr>

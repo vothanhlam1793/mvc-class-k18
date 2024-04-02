@@ -30,6 +30,8 @@
 
 */
 
+var modelProduct = require('../models/productModel');
+
 var products = {
     "id1": {
         name: "Product 1",
@@ -59,20 +61,19 @@ var products = {
     }
 };
 
-var modelProduct = require('../models/productModel');
-
 // READ 
-function getProductWithId(id) {
+async function getProductWithId(id) {
     console.log("PRODUCT ID: " + products[id]);
-    if(products[id] == undefined) {
-        return {
-            name: "Product not found",
-            price: 0,
-            description: "Description not found"
-        };
-    } else {
-        return products[id];
-    }
+    return await modelProduct.getProductWithId(id);
+    // if(products[id] == undefined) {
+    //     return {
+    //         name: "Product not found",
+    //         price: 0,
+    //         description: "Description not found"
+    //     };
+    // } else {
+    //     return products[id];
+    // }
 };
 
 async function getAllProducts() {
@@ -80,5 +81,21 @@ async function getAllProducts() {
     return products;
 }
 
+
+async function createProduct(product) {
+    return await modelProduct.insertProduct(product);
+}
+
+async function deleteProduct(id) {
+    return await modelProduct.deleteProduct(id);
+}
+
+async function updateProduct(id, product) {
+    return await modelProduct.updateProduct(id, product);
+}
+
 module.exports.getProductWithId = getProductWithId;
 module.exports.getAllProducts = getAllProducts;
+module.exports.createProduct = createProduct;
+module.exports.deleteProduct = deleteProduct;
+module.exports.updateProduct = updateProduct;
